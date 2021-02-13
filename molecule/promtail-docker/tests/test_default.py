@@ -14,7 +14,7 @@ def test_only_promtail_is_present(host):
 
 def test_promtail_version(host):
     version_output = host.check_output("docker images grafana/promtail")
-    assert "1.6.1" in version_output
+    assert "2.1.0" in version_output
 
 
 def test_promtail_port_binding(host):
