@@ -4,4 +4,4 @@
   roles:
     - role: ansible-loki
       vars:
-        loki_version: 1.6.1
+        loki_version: 2.1.0
