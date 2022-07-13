@@ -5,7 +5,7 @@
     path: "{{ item }}"
     state: directory
   with_items:
-    - "{{ promtail_config_directory }}"
+    - "{{ promtail_directory }}"
     - /var/lib/promtail
 
 - name: Setup configuration

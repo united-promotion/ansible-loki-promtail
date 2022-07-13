@@ -1,12 +1,12 @@
 {{ ansible_managed | comment }}
 
-auth_enabled: {{ loki_config_auth }}
+auth_enabled: {{ loki_auth }}
 
 server:
-  http_listen_address: {{ loki_config_http_address }}
-  http_listen_port: {{ loki_config_http_port }}
+  http_listen_address: {{ loki_http_address }}
+  http_listen_port: {{ loki_http_port }}
   grpc_listen_address: 127.0.0.1
-  log_level: {{ loki_config_log_level }}
+  log_level: {{ loki_log_level }}
 
 ingester:
   lifecycler:
@@ -27,22 +27,22 @@ schema_config:
     schema: v9
     index:
       prefix: loki_index_
-      period: {{ loki_config_period }}
+      period: {{ loki_period }}
 
 storage_config:
   boltdb:
-    directory: {{ loki_config_store }}/index
+    directory: {{ loki_store }}/index
 
   filesystem:
-    directory: {{ loki_config_store }}/chunks
+    directory: {{ loki_store }}/chunks
 
 limits_config:
   enforce_metric_name: false
   reject_old_samples: true
-  reject_old_samples_max_age: {{ loki_config_period }}
+  reject_old_samples_max_age: {{ loki_period }}
 
 chunk_store_config:
-  max_look_back_period: {{ loki_config_retention }}
+  max_look_back_period: {{ loki_retention }}
 
 table_manager:
   chunk_tables_provisioning:
@@ -56,4 +56,4 @@ table_manager:
     provisioned_read_throughput: 0
     provisioned_write_throughput: 0
   retention_deletes_enabled: true
-  retention_period: {{ loki_config_retention }}
+  retention_period: {{ loki_retention }}
