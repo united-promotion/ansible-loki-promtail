@@ -3,8 +3,3 @@
   hosts: loki
   roles:
     - role: ansible-loki
-
-- name: Converge
-  hosts: promtail
-  roles:
-    - role: ansible-loki

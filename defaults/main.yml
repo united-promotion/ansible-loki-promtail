@@ -1,6 +1,5 @@
 ---
-loki_version: 1.6.1
-
+loki_version: 2.6.0
 loki_directory: /etc/loki
 loki_auth: true
 loki_store: /var/lib/loki
@@ -9,21 +8,3 @@ loki_period: 168h
 loki_http_address: 127.0.0.1
 loki_http_port: 3100
 loki_log_level: debug
-
-# install a containerized promtail
-promtail_use_docker: false
-promtail_docker_image: "grafana/promtail:{{ loki_version }}"
-
-promtail_directory: /etc/promtail
-promtail_log_level: info
-promtail_server_listen: 127.0.0.1
-promtail_server_port: 9080
-promtail_client_loki_address: 127.0.0.1
-promtail_client_loki_port: 3100
-promtail_client_loki_path: /loki/api/v1/push
-promtail_client_tenant_id: luzilla
-promtail_client_set_tenant_id: true
-promtail_client_external_labels:
-    node: "{{ inventory_hostname }}"
-
-promtail_scrape_journald_path: /run/log/journal

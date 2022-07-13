@@ -9,12 +9,6 @@ An Ansible role to install Grafana Loki and Promtail.
 For the standard (from binary) install of loki/promtail:
 
 - `unzip` on the hosts
-
-For the dockerized promtail:
-
-- Python: `docker==4.3.1`
-- `docker-cli`
-
 ## Role Variables
 
 See `defaults/main.yml` to customize this role.

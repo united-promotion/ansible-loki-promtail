@@ -1,0 +1,10 @@
+make: Entering directory `/Users/sitnikovma/ansible-loki-promtail'
+docker run --rm -it \
+		-v "/Users/sitnikovma/ansible-loki-promtail":/tmp/ansible-loki:ro \
+		-v /var/run/docker.sock:/var/run/docker.sock \
+		-w /tmp/ansible-loki \
+		--env MOLECULE_NO_LOG=no \
+		quay.io/ansible/molecule:3.0.4 \
+		molecule test --all
+make: Leaving directory `/Users/sitnikovma/ansible-loki-promtail'
+ 
