@@ -5,7 +5,7 @@
     fail_msg: "loki_version must be '1.2.0', and not 'v1.2.0'"
 
 - name: "Preflight: loki"
-  include_tasks: preflight-loki.ymlxe
+  include_tasks: preflight-loki.yml
 
 - name: Empty version
   set_fact:
