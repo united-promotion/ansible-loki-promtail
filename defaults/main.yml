@@ -7,4 +7,5 @@ loki_retention: 336h
 loki_period: 168h
 loki_http_address: 127.0.0.1
 loki_http_port: 3100
+loki_grpc_address: 127.0.0.1
 loki_log_level: debug

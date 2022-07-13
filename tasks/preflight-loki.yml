@@ -5,7 +5,7 @@
   register: __loki_stat
 
 - name: Get version
-  command: /usr/local/bin/loki -version
+  command: /usr/local/bin/loki -version -config.file /etc/loki/loki.yml
   changed_when: false
   register: __loki_version_out
   when: __loki_stat.stat.exists
