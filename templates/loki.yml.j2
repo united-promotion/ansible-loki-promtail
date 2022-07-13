@@ -10,7 +10,7 @@ server:
 
 ingester:
   lifecycler:
-    address: 127.0.0.1
+    address: {{ loki_http_address }}
     ring:
       kvstore:
         store: inmemory
