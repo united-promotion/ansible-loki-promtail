@@ -1,10 +1,10 @@
 {{ ansible_managed | comment }}
 server:
-  http_listen_address: {{ promtail_config_server_listen }}
-  http_listen_port: {{ promtail_config_server_port }}
-  grpc_listen_address: {{ promtail_config_server_listen }}
+  http_listen_address: {{ promtail_server_listen }}
+  http_listen_port: {{ promtail_server_port }}
+  grpc_listen_address: {{ promtail_server_listen }}
   grpc_listen_port: 0
-  log_level: {{ promtail_config_log_level }}
+  log_level: {{ promtail_log_level }}
 
 # Positions
 positions:
@@ -12,23 +12,14 @@ positions:
 
 # Loki Server URL
 clients:
-  - url: http://{{ promtail_config_client_loki_address }}:{{ promtail_config_client_loki_port }}{{ promtail_config_client_loki_path }}
-{% if promtail_config_client_set_tenant_id %}
-    tenant_id: {{ promtail_config_client_tenant_id }}
+  - url: http://{{ promtail_client_loki_address }}:{{ promtail_client_loki_port }}{{ promtail_client_loki_path }}
+{% if promtail_client_set_tenant_id %}
+    tenant_id: {{ promtail_client_tenant_id }}
 {% endif %}
     external_labels:
-{% for label_key in promtail_config_client_external_labels %}
-      {{ label_key }}: {{ promtail_config_client_external_labels[label_key] }}
+{% for label_key in promtail_client_external_labels %}
+      {{ label_key }}: {{ promtail_client_external_labels[label_key] }}
 {% endfor %}
 
-{% if __loki_go_os == 'linux' %}
 scrape_configs:
-  - job_name: journal
-    journal:
-      path: {{ promtail_config_scrape_journald_path }}
-      labels:
-        job: journal
-    relabel_configs:
-      - source_labels: ['__journal__systemd_unit']
-        target_label: 'unit'
-{% endif %}
+  {{ promtail_scrape_configs | to_nice_yaml(indent=2,sort_keys=False) | indent(2,False) }}

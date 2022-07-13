@@ -15,8 +15,8 @@
     path: "{{ item }}"
     state: directory
   with_items:
-    - "{{ loki_config_directory }}"
-    - "{{ loki_config_store }}"
+    - "{{ loki_directory }}"
+    - "{{ loki_store }}"
 
 - name: Setup configuration
   template:
