@@ -1,5 +1,5 @@
 ---
-loki_version: 2.6.0
+loki_version: 2.6.1
 loki_directory: /etc/loki
 loki_auth: true
 loki_store: /var/lib/loki
